@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000;
+}
+
+main {
+    margin-bottom: 30 px;
+    color: #1e3a5f;
+}
+
+main h1{
+    margin-bottom: 30px;
+    color: #2203d2;
+}
+
+.event-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+
+.event-box {
+    width: 300px;
+    height: 500px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px #2203d2;
+    transition: transform 0.3s ease; 
+    
+}
+
+.event-box:hover{
+    transform: scale(1.1);
+}
+
+.event-box img{
+
+    object-fit: cover;   
+    transition: transform 0.3s ease; 
+}
+
+.event-box img:hover{
+    transform: scale(1);
+}

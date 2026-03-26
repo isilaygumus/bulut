@@ -1,0 +1,157 @@
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+
+  }
+  main {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px; 
+  }
+  
+  .container {
+    display: flex;
+    gap: 20px;
+    
+  }
+  
+  .form-box {
+    background-color: #2203d2;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+
+  }
+  
+  .form-box h2 {
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  form input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #6dcff6;
+    color: #000;
+  }
+  
+  form input::placeholder {
+    color: #305880;
+  }
+  
+  form button {
+    background-color: #3498db;
+    color: #0e2465;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s ease;
+    margin-right: 10px ;
+    margin-left: 10px;
+  }
+  
+  form button:hover {
+    background-color: #1e90ff;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none; 
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    padding: 10px 20px 10px ;
+    background-color: #2203d2;
+    color: rgb(0, 0, 0);
+    position: fixed; 
+    top: 0; 
+    z-index: 10; 
+}
+
+
+
+header .logo {
+  background-color: #ffffff;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  text-align: center;
+  font-style: italic;
+  font-weight:1000 ;
+  
+}
+
+header nav a{
+  color: #1e90ff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+.baslik{
+  justify-content: center;
+  justify-self: center;
+}
+
+footer {
+  background-color: #2203d2;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+footer .contact-info {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+footer a {
+  color: #1e90ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+button{
+  width: 160px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: 0.2s ease;
+  margin-right: 30px ;
+}
+
+button:hover{
+  background-color: #e0e7f0e5;
+}

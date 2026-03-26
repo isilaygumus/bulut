@@ -1,0 +1,82 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2203d2;
+    color: rgb(0, 0, 0);    
+    align-self: top;
+}
+
+header .logo {
+    background-color: #ffffff;
+    color: #2203d2;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    text-align: center;
+    font-style: italic;
+    font-weight:1000 ;
+    margin-left: 10px;
+    
+    
+}
+
+header nav a{
+    color: #1e90ff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.baslik{
+    justify-content: center;
+    justify-self: center;
+}
+
+footer {
+    background-color: #2203d2;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 90px;
+    bottom: 0;
+}
+
+footer .contact-info {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer a {
+    color: #1e90ff; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+button{
+    width: 160px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    cursor: pointer;
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: 0.2s ease;
+    margin-right: 10px ;
+    margin-left: 10px;
+}
+
+button:hover{
+    background-color: #2d4e79e5;
+}

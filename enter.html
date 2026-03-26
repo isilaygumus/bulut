@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Giriş</title>
+    <link rel="stylesheet" href="enter.css">
+    <script src="fonk.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="anasayfa.html">bilet.com</a>
+        </div>
+      <nav>
+        <button onclick="go_to_cat()">KATEGORİLER</button>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+      
+        <div class="form-box">
+          <h2>ÜYE GİRİŞİ</h2>
+          <form action="register.php" method="post">
+            <input type="text" id="email" name="email" autocomplete="on" placeholder="email" required>
+            <input type="password" id="password" name="password" placeholder="şifre" required>
+            <button type="submit" >Giriş Yap</button>
+            <p class="error" id="error-message">E-posta veya şifre hatalı!</p>
+          </form>
+        </div>
+
+        <div class="form-box">
+          <h2>ÜYE OL</h2>
+          <form id="register_form" action="register.php" method="POST">
+            <input type="text" autocomplete="on" id="kayit_email" name="email" placeholder="email" required>
+            <input type="text" autocomplete="on" id="kayit_name" name="name" placeholder="isim soyisim" required>
+            <input type="password" id="kayit_password" name="password" placeholder="şifre" required>
+            <button type="submit" id="kayitbtn">Kayıt Ol</button>
+          </form>
+        </div>
+        
+
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="contact-info">
+        <br><strong>Işılay Gümüş</strong><br><br>
+        E-posta: isilaygumus@gmail.com<br><br>
+      </div>
+    </footer>
+
+  </body>
+
+
+</html>
+
