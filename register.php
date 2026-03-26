@@ -1,65 +1,55 @@
 <?php
-$servername = "localhost"; 
-$username = "root";        
-$password = "";            
-$dbname = "user";   
+header("Content-Type: application/json");
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli("localhost", "root", "", "user");
 
-if ($conn->connect_error) {
-    die("Bağlantı başarısız: " . $conn->connect_error);
-}
+$data = json_decode(file_get_contents("php://input"), true);
 
-// KAYIT İŞLEMİ
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+if ($_GET['action'] == "register") {
 
-    $sql = "SELECT * FROM users WHERE email=?";
-    $stmt = $conn->prepare($sql);
+    $email = $data['email'];
+    $name = $data['name'];
+    $password = password_hash($data['password'], PASSWORD_DEFAULT);
+
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->store_result();
 
-    if ($result->num_rows > 0) {
-        echo "Bu e-posta adresi zaten kayıtlı!";
-    } else {
-        // Senin kodundaki INSERT yapısını prepared statement ile güvenli hale getirdik
-        $stmt = $conn->prepare("INSERT INTO users (email, name, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $email, $name, $password);
-        if ($stmt->execute()) {
-            echo "Yeni kayıt başarıyla oluşturuldu!";
-        } else {
-            echo "Hata: " . $stmt->error;
-        }
+    if ($stmt->num_rows > 0) {
+        echo json_encode(["status" => "error", "message" => "Email zaten var"]);
+        exit();
     }
-    $stmt->close();
+
+    $stmt = $conn->prepare("INSERT INTO users (email, name, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $name, $password);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success"]);
+    } else {
+        echo json_encode(["status" => "error"]);
+    }
 }
 
-// GİRİŞ İŞLEMİ
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+if ($_GET['action'] == "login") {
+
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
+
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
-            header("Location: profil.html");
-            exit(); 
+            echo json_encode(["status" => "success"]);
         } else {
-            echo "Hatalı Şifre";
+            echo json_encode(["status" => "error"]);
         }
     } else {
-        echo "Kullanıcı bulunamadı.";
+        echo json_encode(["status" => "error"]);
     }
-    $stmt->close();
 }
-
-$conn->close();
 ?>
