@@ -1,4 +1,4 @@
-<html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <title>Giriş ve Kayıt</title>
@@ -17,28 +17,29 @@
     </header>
 
     <main>
+        <div class="container">
+          
+          <div class="form-box">
+            <h2>ÜYE GİRİŞİ</h2>
+            <form method="post" action="register.php">
+              <input type="text" id="email" name="email" autocomplete="on" placeholder="email" required>
+              <input type="password" id="password" name="password" placeholder="şifre" required>
+              <button type="submit" name="login">Giriş Yap</button>
+              <p class="error" id="error-message" style="display:none;">E-posta veya şifre hatalı!</p>
+            </form>
+          </div>
 
-    <div class="container">
-      
-      <div class="form-box">
-        <h2>ÜYE GİRİŞİ</h2>
-        <form  method="post">
-          <input type="text" id="email" name="email" autocomplete="on" placeholder="email" required>
-          <input type="password" id="password" name="password" placeholder="şifre" required>
-          <button type="submit" name="login" >Giriş Yap</button>
-          <p class="error" id="error-message">E-posta veya şifre hatalı!</p>
-        </form>
-      </div>
+          <div class="form-box">
+            <h2>ÜYE OL</h2>
+            <form id="register_form" method="POST" action="register.php">
+              <input type="text" autocomplete="on" id="uyeemail" name="email" placeholder="email" required>
+              <input type="text" autocomplete="on" id="uyename" name="name" placeholder="isim soyisim" required>
+              <input type="password" id="uyepassword" name="password" placeholder="şifre" required>
+              <button type="submit" name="register" id="kayitbtn">Kayıt Ol</button>
+            </form>
+          </div>
 
-      <div class="form-box">
-        <h2>ÜYE OL</h2>
-        <form id="register_form"  method="POST">
-          <input type="text" autocomplete="on" id="uyeemail" name="email" placeholder="email" required>
-          <input type="text" autocomplete="on" id="uyename" name="name" placeholder="isim soyisim" required>
-          <input type="password" id="uyepassword" name="password" placeholder="şifre" required>
-          <button type="submit" name="register" id="kayitbtn">Kayıt Ol</button>
-        </form>
-      </div>
+        </div>
     </main>
 
     <footer>
