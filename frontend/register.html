@@ -18,14 +18,12 @@
 <button onclick="register()">Kayıt</button>
 
 <script>
-// Ortak headers tanımlaması (API'nin JSON beklediğini belirtir)
 const headers = { "Content-Type": "application/json" };
 
 async function login() {
-    // DOĞRU YOL: ../backend/register.php
     const res = await fetch("../backend/register.php?action=login", {
         method: "POST",
-        headers: headers, // Bunu eklemelisin
+        headers: headers,
         body: JSON.stringify({
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
@@ -36,10 +34,9 @@ async function login() {
 }
 
 async function register() {
-    // HATA DÜZELTİLDİ: "api.php" yerine "../backend/register.php" yapıldı
     const res = await fetch("../backend/register.php?action=register", {
         method: "POST",
-        headers: headers, // Bunu eklemelisin
+        headers: headers, 
         body: JSON.stringify({
             email: document.getElementById('uyeemail').value,
             name: document.getElementById('uyename').value,
