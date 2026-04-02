@@ -1,5 +1,5 @@
 function go_to_enter() {
-    window.location.href = "register.php"
+    window.location.href = "../backend/register.php"
 }
 
 function go_to_cat() {
