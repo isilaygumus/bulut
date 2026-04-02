@@ -19,7 +19,7 @@
 
 <script>
 async function login() {
-    const res = await fetch("register.php?action=login", {
+    const res = await fetch("../backend/register.php?action=login", {
         method: "POST",
         body: JSON.stringify({
             email: email.value,
