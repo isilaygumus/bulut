@@ -31,7 +31,7 @@ async function login() {
 }
 
 async function register() {
-    const res = await fetch("api.php?action=register", {
+    const res = await fetch("../backend/register.php?action=register", {
         method: "POST",
         body: JSON.stringify({
             email: uyeemail.value,
