@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <title>Giriş & Kayıt</title>
@@ -18,29 +18,36 @@
 <button onclick="register()">Kayıt</button>
 
 <script>
+// Ortak headers tanımlaması (API'nin JSON beklediğini belirtir)
+const headers = { "Content-Type": "application/json" };
+
 async function login() {
+    // DOĞRU YOL: ../backend/register.php
     const res = await fetch("../backend/register.php?action=login", {
         method: "POST",
+        headers: headers, // Bunu eklemelisin
         body: JSON.stringify({
-            email: email.value,
-            password: password.value
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
         })
     });
     const data = await res.json();
-    alert(data.status);
+    alert(data.status + ": " + (data.message || ""));
 }
 
 async function register() {
+    // HATA DÜZELTİLDİ: "api.php" yerine "../backend/register.php" yapıldı
     const res = await fetch("../backend/register.php?action=register", {
         method: "POST",
+        headers: headers, // Bunu eklemelisin
         body: JSON.stringify({
-            email: uyeemail.value,
-            name: uyename.value,
-            password: uyepassword.value
+            email: document.getElementById('uyeemail').value,
+            name: document.getElementById('uyename').value,
+            password: document.getElementById('uyepassword').value
         })
     });
     const data = await res.json();
-    alert(data.status);
+    alert(data.status + ": " + (data.message || ""));
 }
 </script>
 
