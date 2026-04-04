@@ -1,5 +1,5 @@
 function go_to_enter() {
-    window.location.href = "../backend/register.php"
+    window.location.href = "enter.html"
 }
 
 function go_to_cat() {
@@ -25,20 +25,29 @@ function register() {
             password: document.getElementById('uyepassword').value
         })
     })
-    .then(res => res.json())
-    .then(data => alert(data.status));
+        .then(res => res.json())
+        .then(data => alert(data.status));
 }
 
 // Giriş Fonksiyonu
 function login() {
+    const emailVal = document.getElementById('email').value;
+    const passVal = document.getElementById('password').value;
+
     fetch("../backend/register.php?action=login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
+            email: emailVal,
+            password: passVal
         })
     })
-    .then(res => res.json())
-    .then(data => alert(data.status));
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            if (data.status === "success") {
+                window.location.href = "profil.html"; // Giriş başarılıysa yönlendir
+            }
+        })
+        .catch(err => console.error("Hata:", err));
 }
