@@ -19,27 +19,25 @@
       
         <div class="form-box">
           <h2>ÜYE GİRİŞİ</h2>
-          <form action="register.php" method="post">
+          <form onsubmit="event.preventDefault();"> 
             <input type="text" id="email" name="email" autocomplete="on" placeholder="email" required>
             <input type="password" id="password" name="password" placeholder="şifre" required>
-            <button type="submit" >Giriş Yap</button>
+            <button type="button" onclick="login()">Giriş Yap</button> 
             <p class="error" id="error-message">E-posta veya şifre hatalı!</p>
           </form>
         </div>
 
         <div class="form-box">
           <h2>ÜYE OL</h2>
-          <form id="register_form" action="register.php" method="POST">
-            <input type="text" autocomplete="on" id="kayit_email" name="email" placeholder="email" required>
-            <input type="text" autocomplete="on" id="kayit_name" name="name" placeholder="isim soyisim" required>
-            <input type="password" id="kayit_password" name="password" placeholder="şifre" required>
-            <button type="submit" id="kayitbtn">Kayıt Ol</button>
+          <form onsubmit="event.preventDefault();">
+            <input type="text" id="uyeemail" name="email" placeholder="email" required>
+            <input type="text" id="uyename" name="name" placeholder="isim soyisim" required>
+            <input type="password" id="uyepassword" name="password" placeholder="şifre" required>
+            <button type="button" onclick="register()" id="kayitbtn">Kayıt Ol</button>
           </form>
         </div>
         
-
       </div>
-
     </main>
 
     <footer>
@@ -50,7 +48,4 @@
     </footer>
 
   </body>
-
-
 </html>
-
