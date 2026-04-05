@@ -16,17 +16,23 @@ function go_to_koltuk() {
 
 // Kayıt Fonksiyonu
 function register() {
-    fetch("../backend/register.php?action=register", {
+    const email = document.getElementById('uyeemail').value;
+    const name = document.getElementById('uyename').value;
+    const password = document.getElementById('uyepassword').value;
+
+    fetch("http://16.171.112.168/backend/register.php?action=register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            email: document.getElementById('uyeemail').value,
-            name: document.getElementById('uyename').value,
-            password: document.getElementById('uyepassword').value
-        })
+        body: JSON.stringify({ email: email, name: name, password: password })
     })
-        .then(res => res.json())
-        .then(data => alert(data.status));
+    .then(res => res.json())
+    .then(data => {
+        alert(data.status); 
+    })
+    .catch(err => {
+        alert("Bağlantı hatası!");
+        console.error("HATA:", err);
+    });
 }
 
 // Giriş Fonksiyonu
@@ -34,20 +40,25 @@ function login() {
     const emailVal = document.getElementById('email').value;
     const passVal = document.getElementById('password').value;
 
-    fetch("../backend/register.php?action=login", {
+    fetch("http://16.171.112.168/backend/register.php?action=login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            email: emailVal,
-            password: passVal
-        })
+        body: JSON.stringify({ email: emailVal, password: passVal })
     })
-        .then(res => res.json())
-        .then(data => {
-            alert(data.message);
-            if (data.status === "success") {
-                window.location.href = "profil.html"; // Giriş başarılıysa yönlendir
-            }
-        })
-        .catch(err => console.error("Hata:", err));
+    .then(res => res.json())
+    .then(data => {
+        alert(data.status); 
+        
+
+        // Giriş başarılıysa profil sayfasına yönlendir
+
+// alert'te ne yazıyorsa buraya tam olarak onu yaz (Büyük/küçük harfe duyarlıdır)
+if (data.status === "Giriş Başarılı") {
+    window.location.href = "profil.html"; 
+}
+    })
+    .catch(err => {
+        alert("Bağlantı hatası!");
+        console.error("HATA:", err);
+    });
 }
